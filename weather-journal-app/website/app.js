@@ -1,7 +1,7 @@
 /* Global Variables */
 //inputs
-const zipCode = document.getElementById('zip').value;
-const feelings = document.getElementById('feelings').value;
+const zipCodeElement = document.getElementById('zip');
+const feelingsElement = document.getElementById('feelings');
 
 //results
 const date = document.getElementById('date');
@@ -11,7 +11,7 @@ const content = document.getElementById('content');
 // Personal API Key for OpenWeatherMap API
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
 const countryCode = 'us';
-const apiKey = '9f060617d9cab3ab1d46e32d15b4ccfe';
+const apiKey = ''; //  you can get your own apikey from https://openweathermap.org/
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -22,11 +22,11 @@ document.getElementById('generate').addEventListener('click',generateData);
 
 /* Function called by event listener */
 function generateData() {
-console.log("feel",feelings);
-  getWeather()
+  const zipCode = zipCodeElement.value;
+  const feelings = feelingsElement.value;
+  getWeather(zipCode)
     .then((weatherData)=> {
     console.log("weather",weatherData.main.temp);
-    console.log("feel",feelings);
     data={ temp: weatherData.main.temp, date: newDate, userContent:feelings };
     console.log("data",data);
       return postData('/addData',data);
@@ -41,7 +41,7 @@ console.log("feel",feelings);
 
 //**** app functions ****//
 /* Function to GET Web API Data*/
-async function getWeather () {
+async function getWeather (zipCode) {
     const res = await fetch(`${baseUrl}?zip=${zipCode},${countryCode}&appid=${apiKey}`);
     try {
       const weatherData = await res.json();
