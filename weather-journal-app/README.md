@@ -13,6 +13,6 @@ creating a web app that uses OpenWeatherMap API to get weather based on user's l
 
 ## Instructions:
 
-Locally NodeJS need to be is installed (run 'npm i' from your terminal at the top level project directory to install via the Command Line)
-then (nodemon server) to start the web app at port:3000
-Enter a (US-based) zip code in form of '{zipcode},{country code}', e.g., '94040,us' then click (the) "Generate" button to view the search results
+Locally NodeJS need to be is installed (run 'npm i' from your terminal at the top level project directory to install via the Command Line),
+then (nodemon server) to start the web app at port:3000.
+Enter a (US-based) zip code , e.g., '94040' then click (the) "Generate" button to view the weather results
